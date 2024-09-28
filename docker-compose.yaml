@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: code/deployment/api/dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./code/deployment/api:/home
+      - ./code/deployment/app/model_app.py:/home/model_app.py
+      - ./code/models/age_pred_dropout03.py:/home/age_pred_dropout03.py
+      - ./models/age_pred_bs64_ne45_do03.pth:/home/age_pred_bs64_ne45_do03.pth
+
+  streamlit:
+    build:
+      context: ./code/deployment/app
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./code/deployment/app:/app

@@ -1,0 +1,18 @@
+FROM python:3.10-slim
+
+WORKDIR /home
+
+COPY code/deployment/api/ /home
+
+COPY code/deployment/app/model_app.py /home
+
+COPY code/models/age_pred_dropout03.py /home
+
+COPY models/age_pred_bs64_ne45_do03.pth /home
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
