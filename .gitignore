@@ -1,4 +1,5 @@
 .venv
 data/
-models/
 services/
+age_pred_bs64_ne45_do03.pth
+agepred_bs32_ne35_do03.pth
