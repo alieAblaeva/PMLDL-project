@@ -7,7 +7,7 @@ project_root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirna
 
 
 model = AgeDetectionCNN()
-model_path = os.path.join('age_pred_bs64_ne45_do03.pth')
+model_path = 'age_pred_bs64_ne45_do03.pth'
 
 model.load_state_dict(torch.load(model_path))
 
@@ -25,5 +25,5 @@ def model_pipeline(image: Image):
 
     with torch.no_grad():
         output = model(img_tensor)
-    print('output: ', output)
+    print('output: ', torch.squeeze(output).item())
     return torch.squeeze(output).item()

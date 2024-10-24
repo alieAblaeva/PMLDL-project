@@ -29,4 +29,4 @@ def predict(file: UploadFile = File(...)):
     print(image)
     result = model_pipeline(image)
     print(result)
-    return {"prediction": result}
+    return {"prediction": int(result)}

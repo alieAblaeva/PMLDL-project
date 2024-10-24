@@ -21,4 +21,4 @@ if uploaded_file is not None:
         response = requests.post("http://api:8000/predict", files={"file": img_bytes}
 )
 
-        st.write("Prediction result:", response.content)
+        st.write("Prediction result:", response.json()["prediction"])
